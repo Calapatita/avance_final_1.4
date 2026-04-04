@@ -1,0 +1,240 @@
+/* ====================== 
+    RESET Y ESTILOS BASE
+   ====================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Regla muy importante para contenedores*/
+}                           /* Evita problemas con padding, border o with */
+
+/* 2. Base general */
+html {
+    font-size: 16px;
+}   
+
+body {
+    font-family: Arial, sans-serif;
+    color: #01548A;
+    background-color: #F2F2F2;
+    line-height: 1.6;
+}
+/* =========================== 
+    FINAL RESET Y ESTILOS BASE
+   =========================== */
+
+/* ======== 
+    HEADER
+   ======== */
+
+header {
+    display: flex;                  /* Activamos el modo Flexbox */
+    justify-content: space-between; /* Separamos los elementos a los extremos */
+    align-items: center;            /* Centramos todo verticalmente */
+    padding: 20px 5%;               /* 20 espacio arriba/abajo 5% elastico  a los costados */
+    background-color: #F2F2F2;    /* aplicamos color de body es opcional */
+    border-bottom: 2px solid #01548A; /* creamos Una línea sutil para separar del Nav */
+}
+
+header h1 a {
+    text-decoration: none;  /* Quitamos el subrayado del link */
+    color: #01548A;      /* aplicamos color de body es opcional */
+    font-weight: bold;     /* Le damos mayor ressalte a la etiqueta h1*/
+    font-size: 24px;      /* Aplicamos un tamaño mayor a la marca*/
+}
+
+header ul {
+    display: flex;         /* Ponemos Login y Registro en fila */
+    list-style: none;      /* Quitamos los puntos de la lista */
+    gap: 20px;             /* Separación entre los dos botones */
+}
+
+header ul li a {
+    text-decoration: none; /* Quitamos subrayado de las etiquetas a */
+    color: #01548A;      /* aplicamos color de Body es opcional */
+    font-size: 14px;       /* Cambiamos el tamaño de la letra por estetica*/
+}
+
+/* ============== 
+    FINAL HEADER
+   ============== */
+
+/* ======== 
+    NAV
+   ======== */
+
+.main-menu {                      /* Nombre de contenedor en index */
+    background-color: #01548A;  /* cambiamos fondo del body por azul */
+    padding: 10px 5%;             /* 10 Espacio arriba/abajo 5% elástico a los lados */
+}
+
+.main-menu ul {
+    display: flex;                /* Ponemos los links en fila horizontal */
+    justify-content: center;      /* Centramos el menú en la pantalla */
+    list-style: none;             /* Quitamos los puntos de la lista */
+    gap: 40px;                    /* Espacio entre cada opción */
+}
+
+.main-menu ul li a {
+    color: #FFFFFF;             /* Cambiamos color de Letras en el body */
+    text-decoration: none;        /* Quitamos el subrayado de los links */
+    font-size: 16px;              /* Tamaño standar en html */
+    font-weight: 500;             /* Un grosor "Negrita" para los textos de los links */
+    text-transform: uppercase;    /* Opcional: Cambia texto en mayusculas */
+}
+
+/* ==========
+    FINAL NAV
+   ========== */
+
+/* ======
+    MAIN
+   ====== */
+
+main {
+    display: grid; /* Usamos grid porque hay 2 etiquetas dentro de main */
+    grid-template-columns: 1fr;    /* Una sola columna de ancho total */
+    grid-template-rows: auto auto auto; /* espacio 1: Productos | espacio 2: Aside */
+    padding: 20px;      /* Distancia entra arriba y abajo de otro elemento*/
+    gap: 20px;
+}
+
+main h2 {
+    text-align: center;
+}
+
+/* ===========
+    FINAL MAIN
+   =========== */
+
+/* =========
+    SECTION
+   ========= */
+
+.product-container {
+    display: flex;  /* ponemos los elementos de section "Article" de forma horizontal */
+    justify-content: space-between; /* Separamos los article a los extremos */
+    gap: 20px;      /* Espacio entre cada imagen o article*/
+}
+.product-card a {
+    font-size: 25px; /*AGREGADO APG */
+    font-weight: 600; /*AGREGADO APG */
+    color: #01548A; /*AGREGADO APG */
+    text-decoration: none; /*AGREGADO APG */
+}
+/* ==============
+    FINAL SECTION
+   ============== */
+
+/* =========
+    ARTICLE
+   ========= */
+
+.product-card {
+    flex: 1;                  /* Obliga a los 3 article medir igual */
+    background-color: #F2F2F2; /* mantenemos color de body */
+    padding: 30px;               /* espacio entre cada article */
+    text-align: center;          /* Centramos todas los textos dentro de article */  
+}
+
+.product-card img {
+    width: 100%;        /* Ocupa el ancho de su tarjeta amarilla */
+    max-height: 100%;  /* Le ponemos un límite de altura para que no sea infinita */
+    object-fit: cover;  /* Truco: Corta la imagen para que encaje sin estirarse feo */
+    border-radius: 8px;
+}
+
+/* ===============
+    FINAL ARTICLE
+   =============== */
+
+aside {
+    text-align: center;
+    width: 100%;
+    max-height: 100%;  /* Le ponemos un límite de altura para que no sea infinita */
+    object-fit: cover;  /* Truco: Corta la imagen para que encaje sin estirarse feo */
+}
+
+aside a { /*AGREGADO APG */
+    font-size: 25px; /*AGREGADO APG */
+    font-weight: 600; /*AGREGADO APG */
+    color: #01548A; /*AGREGADO APG */
+    text-decoration: none; /*AGREGADO APG */
+}
+
+
+footer { /*AGREGADO APG */
+    display: grid; /*AGREGADO APG */
+    grid-template-rows: auto auto; /*AGREGADO APG */
+    margin: 0;
+    padding: 0;
+}
+
+footer ul{
+    text-decoration: none;
+    list-style: none;
+}
+footer a {
+    text-decoration: none; /* Quita la línea subrayada de abajo */
+    color: inherit;        /* ¡TRUCO PRO! Hace que el link use el mismo color que el texto del padre */
+}
+
+.footer-contacto {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    background-color: #01548A;
+    color: #FFFFFF;
+}
+
+footer .logo { /*AGREGADO APG */
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    padding-right: 30%; /* 30% de espacio ocupado en la derecha empujando logo a la izquierda*/
+                        /*Mejorar con media queries*/
+}
+
+.redes-sociales {
+    display: flex;
+    flex-direction: row; /* Los pone uno al lado del otro */
+    align-items:center;
+    justify-content:left;
+    gap: 10px;
+}
+.redes-sociales .social-links {
+    display: flex;       /* ¡Aquí activamos la magia! */
+    flex-direction: row; /* Los pone uno al lado del otro */ 
+    gap: 25px;           /* Crea una separación elegante entre cada red social */
+}
+
+
+
+.footer-legal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-legal
+.footer-legal p {
+    text-align: center;
+    margin-left: 5%;
+}
+
+.footer-legal nav ul {
+    display: flex;
+    list-style: none;
+    padding-right: 10px;
+    gap: 20px;
+}
+
+
+
+
+
+
+
+.boton-video {
+    color: blue;           /* Cambia el color de fuente azul clásico de los links */
+    text-decoration: none;   /* Quita el subrayado azul clásico de los links */
+}
