@@ -164,7 +164,7 @@ aside a { /*AGREGADO APG */
 
 footer { /*AGREGADO APG */
     display: grid; /*AGREGADO APG */
-    grid-template-rows: auto auto; /*AGREGADO APG */
+    grid-template-rows: 1fr 1fr; /*cambio auto por 1fr 4.4 */
     margin: 0;
     padding: 0;
 }
@@ -185,11 +185,18 @@ footer a {
     color: #FFFFFF;
 }
 
+address {
+    display: flex; /* agregado 4.4 */
+    flex-direction: row; /* agregado 4.4 */
+    align-items: center; /* agregado 4.4 */
+    gap: 15px; /* agregado 4.4 */
+}
+
 footer .logo { /*AGREGADO APG */
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items:center;
+    display: flex; 
+    flex-direction: column;  /*Le damos direccion vertical al contenedor*/
+    align-items:center;      /*centramos de izquierda a derecha date 4.4*/ 
+    justify-content:center;  /* Centramos de arriba abajo */    
     padding-right: 30%; /* 30% de espacio ocupado en la derecha empujando logo a la izquierda*/
                         /*Mejorar con media queries*/
 }
@@ -197,9 +204,9 @@ footer .logo { /*AGREGADO APG */
 .redes-sociales {
     display: flex;
     flex-direction: row; /* Los pone uno al lado del otro */
-    align-items:center;
-    justify-content:left;
-    gap: 10px;
+    align-items:center;  /* centramos de arriba hacia abajo date 4.4*/ 
+    justify-content:left; /* posicionamos de izquierda a derecha date 4.4*/
+    gap: 10px; /* Espacio entre cada elemento date 4.4 */
 }
 .redes-sociales .social-links {
     display: flex;       /* ¡Aquí activamos la magia! */
@@ -207,34 +214,27 @@ footer .logo { /*AGREGADO APG */
     gap: 25px;           /* Crea una separación elegante entre cada red social */
 }
 
-
-
-.footer-legal {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+address ul {
+    display: flex;       /* agregado 4.4 */
+    flex-direction: row; /* agregado 4.4 */
+    align-items:center;  /* agregado 4.4 */
+    justify-content: flex-end; /* agregado 4.4 */
+    gap: 20px;           /* agregado 4.4 */
+    padding-left: 10%;   /* agregado 4.4 */
+    margin: 0;           /* agregado 4.4 */
+    
 }
 
-.footer-legal
-.footer-legal p {
-    text-align: center;
-    margin-left: 5%;
+.footer-legal {
+    display: flex;       /* agregado 4.4 */
+    flex-direction: row; /* agregado 4.4 */
+    align-items: center; /* agregado 4.4 */
+    justify-content: space-around; /* agregado 4.4 */
 }
 
 .footer-legal nav ul {
-    display: flex;
-    list-style: none;
-    padding-right: 10px;
-    gap: 20px;
-}
-
-
-
-
-
-
-
-.boton-video {
-    color: blue;           /* Cambia el color de fuente azul clásico de los links */
-    text-decoration: none;   /* Quita el subrayado azul clásico de los links */
+    display: flex; /* agregado 4.4 */
+    flex-direction: row; /* agregado 4.4 */
+    list-style: none; /* agregado 4.4 */
+    gap: 25px; /* agregado 4.4 */
 }
