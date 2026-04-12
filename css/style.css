@@ -2,239 +2,545 @@
     RESET Y ESTILOS BASE
    ====================== */
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0; /*margenes en cero*/
+    padding: 0; /*padding en cero*/
     box-sizing: border-box; /* Regla muy importante para contenedores*/
-}                           /* Evita problemas con padding, border o with */
-
-/* 2. Base general */
-html {
-    font-size: 16px;
-}   
-
+    /*outline: 1px #01548A  solid !important;/* Bordes externos para visualizar diseño*/
+                                        /* comand para que CSS no oculte la lineas durante maquetado*/
+}
 body {
+    background: #f2f2f2;
+    color: #01548A ;
     font-family: Arial, sans-serif;
-    color: #01548A;
-    background-color: #F2F2F2;
-    line-height: 1.6;
-}
-/* =========================== 
-    FINAL RESET Y ESTILOS BASE
-   =========================== */
-
-/* ======== 
-    HEADER
-   ======== */
-
-header {
-    display: flex;                  /* Activamos el modo Flexbox */
-    justify-content: space-between; /* Separamos los elementos a los extremos */
-    align-items: center;            /* Centramos todo verticalmente */
-    padding: 20px 5%;               /* 20 espacio arriba/abajo 5% elastico  a los costados */
-    background-color: #F2F2F2;    /* aplicamos color de body es opcional */
-    border-bottom: 2px solid #01548A; /* creamos Una línea sutil para separar del Nav */
 }
 
-header h1 a {
-    text-decoration: none;  /* Quitamos el subrayado del link */
-    color: #01548A;      /* aplicamos color de body es opcional */
-    font-weight: bold;     /* Le damos mayor ressalte a la etiqueta h1*/
-    font-size: 24px;      /* Aplicamos un tamaño mayor a la marca*/
-}
+/* ============================ 
+    Creación de areas LAYOUT
+   ============================ */
+.area-header {grid-area: header;} /*AREAS PARA APRENDER*/
+.area-nav {grid-area: nav;}
+.area-main {grid-area: main;}
+.area-aside {grid-area: aside;}
+.area-footer {grid-area: footer;}
 
-header ul {
-    display: flex;         /* Ponemos Login y Registro en fila */
-    list-style: none;      /* Quitamos los puntos de la lista */
-    gap: 20px;             /* Separación entre los dos botones */
-}
-
-header ul li a {
-    text-decoration: none; /* Quitamos subrayado de las etiquetas a */
-    color: #01548A;      /* aplicamos color de Body es opcional */
-    font-size: 14px;       /* Cambiamos el tamaño de la letra por estetica*/
-}
-
-/* ============== 
-    FINAL HEADER
-   ============== */
-
-/* ======== 
-    NAV
-   ======== */
-
-.main-menu {                      /* Nombre de contenedor en index */
-    background-color: #01548A;  /* cambiamos fondo del body por azul */
-    padding: 10px 5%;             /* 10 Espacio arriba/abajo 5% elástico a los lados */
-}
-
-.main-menu ul {
-    display: flex;                /* Ponemos los links en fila horizontal */
-    justify-content: center;      /* Centramos el menú en la pantalla */
-    list-style: none;             /* Quitamos los puntos de la lista */
-    gap: 40px;                    /* Espacio entre cada opción */
-}
-
-.main-menu ul li a {
-    color: #FFFFFF;             /* Cambiamos color de Letras en el body */
-    text-decoration: none;        /* Quitamos el subrayado de los links */
-    font-size: 16px;              /* Tamaño standar en html */
-    font-weight: 500;             /* Un grosor "Negrita" para los textos de los links */
-    text-transform: uppercase;    /* Opcional: Cambia texto en mayusculas */
-}
-
-/* ==========
-    FINAL NAV
-   ========== */
-
-/* ======
-    MAIN
-   ====== */
-
-main {
-    display: grid; /* Usamos grid porque hay 2 etiquetas dentro de main */
-    grid-template-columns: 1fr;    /* Una sola columna de ancho total */
-    grid-template-rows: auto auto auto; /* espacio 1: Productos | espacio 2: Aside */
-    padding: 20px;      /* Distancia entra arriba y abajo de otro elemento*/
-    gap: 20px;
-}
-
-main h2 {
-    text-align: center;
-}
-
-/* ===========
-    FINAL MAIN
-   =========== */
-
-/* =========
-    SECTION
-   ========= */
-
-.product-container {
-    display: flex;  /* ponemos los elementos de section "Article" de forma horizontal */
-    justify-content: space-between; /* Separamos los article a los extremos */
-    gap: 20px;      /* Espacio entre cada imagen o article*/
-}
-.product-card a {
-    font-size: 25px; /*AGREGADO APG */
-    font-weight: 600; /*AGREGADO APG */
-    color: #01548A; /*AGREGADO APG */
-    text-decoration: none; /*AGREGADO APG */
-}
-/* ==============
-    FINAL SECTION
-   ============== */
-
-/* =========
-    ARTICLE
-   ========= */
-
-.product-card {
-    flex: 1;                  /* Obliga a los 3 article medir igual */
-    background-color: #F2F2F2; /* mantenemos color de body */
-    padding: 30px;               /* espacio entre cada article */
-    text-align: center;          /* Centramos todas los textos dentro de article */  
-}
-
-.product-card img {
-    width: 100%;        /* Ocupa el ancho de su tarjeta amarilla */
-    max-height: 100%;  /* Le ponemos un límite de altura para que no sea infinita */
-    object-fit: cover;  /* Truco: Corta la imagen para que encaje sin estirarse feo */
-    border-radius: 8px;
-}
-
-/* ===============
-    FINAL ARTICLE
-   =============== */
-
-aside {
-    text-align: center;
-    width: 100%;
-    max-height: 100%;  /* Le ponemos un límite de altura para que no sea infinita */
-    object-fit: cover;  /* Truco: Corta la imagen para que encaje sin estirarse feo */
-}
-
-aside a { /*AGREGADO APG */
-    font-size: 25px; /*AGREGADO APG */
-    font-weight: 600; /*AGREGADO APG */
-    color: #01548A; /*AGREGADO APG */
-    text-decoration: none; /*AGREGADO APG */
-}
-
-
-footer { /*AGREGADO APG */
-    display: grid; /*AGREGADO APG */
-    grid-template-rows: 1fr 1fr; /*cambio auto por 1fr 4.4 */
-    margin: 0;
-    padding: 0;
-}
-
-footer ul{
-    text-decoration: none;
-    list-style: none;
-}
-footer a {
-    text-decoration: none; /* Quita la línea subrayada de abajo */
-    color: inherit;        /* ¡TRUCO PRO! Hace que el link use el mismo color que el texto del padre */
-}
-
-.footer-contacto {
+/* ================================= 
+    contaniner  (Móvil First 320px)
+   ================================= */
+.container {
     display: grid;
-    grid-template-columns: 1fr 1fr 2fr;
-    background-color: #01548A;
-    color: #FFFFFF;
+    grid-template-columns: 1fr;
+    /*grid-template-rows: 50px 60px 120px 480px;*/
+    width: clamp(320px, 95%, 1200px);
+    min-height: 100dvh;
+    margin: 0 auto;    
+    gap:clamp(0.5rem, 2vw, 1.5rem);
+    padding: clamp(0.5rem, 3vw, 1rem);    
+    grid-template-areas: /*AREAS PARA APRENDER*/
+    "header"
+    "nav"
+    "aside"
+    "main"
+    "footer";
+}
+/* ============================= 
+    container main (Móvil First)
+   ============================= */
+.area-main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem
 }
 
-address {
-    display: flex; /* agregado 4.4 */
-    flex-direction: row; /* agregado 4.4 */
-    align-items: center; /* agregado 4.4 */
-    gap: 15px; /* agregado 4.4 */
+/* =======================================================
+    TABLET (768px) - El Aside baja después del Main
+   ======================================================= */
+@media (min-width: 768px) {
+    .container{
+        gap: clamp(1rem, 2.5vw, 1.5rem);
+        padding: clamp(1rem, 3vw, 1.5rem);
+        grid-template-areas: 
+        "header"
+        "nav"
+        "main"
+        "aside"
+        "footer";
+    }
+    .area-main {
+        gap: clamp(1rem, 2.5vw, 1.5rem);
+        padding: clamp(1rem, 3vw, 1.5rem)
+    }
 }
 
-footer .logo { /*AGREGADO APG */
-    display: flex; 
-    flex-direction: column;  /*Le damos direccion vertical al contenedor*/
-    align-items:center;      /*centramos de izquierda a derecha date 4.4*/ 
-    justify-content:center;  /* Centramos de arriba abajo */    
-    padding-right: 30%; /* 30% de espacio ocupado en la derecha empujando logo a la izquierda*/
-                        /*Mejorar con media queries*/
+/* =======================================================
+    DESKTOP (992px) - 3 Columnas y Aside vuelve a subir
+   ======================================================= */
+@media (min-width: 992px){
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+        "header header header"
+        "nav nav nav"
+        "aside aside aside"
+        "main main main"
+        "footer footer footer";
+    }
+    .area-main {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(1.5rem, 2.5vw, 2rem);
+        padding: clamp(1.5rem, 3vw, 2.5rem)
+    }
 }
 
-.redes-sociales {
+/* ==========================
+    HEADER (320PX)
+   ========================= */
+
+.area-header {
     display: flex;
-    flex-direction: row; /* Los pone uno al lado del otro */
-    align-items:center;  /* centramos de arriba hacia abajo date 4.4*/ 
-    justify-content:left; /* posicionamos de izquierda a derecha date 4.4*/
-    gap: 10px; /* Espacio entre cada elemento date 4.4 */
-}
-.redes-sociales .social-links {
-    display: flex;       /* ¡Aquí activamos la magia! */
-    flex-direction: row; /* Los pone uno al lado del otro */ 
-    gap: 25px;           /* Crea una separación elegante entre cada red social */
-}
-
-address ul {
-    display: flex;       /* agregado 4.4 */
-    flex-direction: row; /* agregado 4.4 */
-    align-items:center;  /* agregado 4.4 */
-    justify-content: flex-end; /* agregado 4.4 */
-    gap: 20px;           /* agregado 4.4 */
-    padding-left: 10%;   /* agregado 4.4 */
-    margin: 0;           /* agregado 4.4 */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(0.3rem, 2vw, 1.5rem);
+    padding: 0.8rem clamp(1.2rem, 5vw, 2.5rem);
     
 }
 
-.footer-legal {
-    display: flex;       /* agregado 4.4 */
-    flex-direction: row; /* agregado 4.4 */
-    align-items: center; /* agregado 4.4 */
-    justify-content: space-around; /* agregado 4.4 */
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+    ;
+    text-align: center;
+}
+.logo h1 {
+    font-size: clamp(1.2rem, 4vw + 0.2rem, 1.8rem);
+    margin: 0;
+}
+.logo h1 a {
+    text-decoration: none;
+    color: #01548A;
+}
+.logo p {
+    font-size: clamp(0.55rem, 1.5vw + 0.1rem, 0.8rem);
+    letter-spacing: 1px;
+    color: #01548A;
+}
+.area-header nav ul {
+    display: flex;
+    list-style: none;
+    gap: clamp(0.8rem, 2vw + 0.2rem, 2rem)
+}
+.area-header nav a {
+    text-decoration: none;
+    color: #01548A;
+    font-size: clamp(0.65rem, 1.2vw + 0.3rem, 1rem);
+    font-weight: 500;
+    white-space: nowrap;
 }
 
+
+
+/* ==============
+    NAV (320PX)
+   ============== */
+
+
+.area-nav {
+    grid-area: nav; /*rotulamos ubicacion*/
+    display: grid;
+    min-height: 3rem;
+    /*min 3.5rem ? ? */
+    place-items: center;
+    padding: clamp(0.4rem, 2vw, 1.2rem) 0;
+    margin: 0.5rem 0;
+    border-radius: 15px;
+    background-color: #01548A;    
+}
+
+.area-nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center; /*cambio por between opcional*/
+    text-align: center;
+    list-style: none;
+    width: 95%;
+    gap: clamp(1rem, 3vw, 2.5rem);
+}
+
+.area-nav ul a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: clamp(0.65rem, 1.5vw + 0.1rem, 1rem);
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+    color: white;
+}
+.area-nav ul li a:hover {
+    color: #a0d4ff;
+}
+
+/* ================
+    ASIDE (320PX)
+   ================ */
+
+    .area-aside{
+        grid-area: aside; /*rotulamos ubicacion*/
+        display: grid;
+        /*place-items: center;   REVISAR */ 
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        width: 100%; /* clamp(280px, 100%, 400px) hoy*/
+        max-width: 700px; /*hoy*/
+        margin: 0 auto;
+        border-radius: 12px;
+        overflow: hidden; /*Preguntar que hace*/
+        position: relative; /*Preguntar que hace*/
+        /*background-color: #ffed00; /*Pintado chafa*/
+        /*Util cuando cambiamos a vista de celular*/
+    }
+    
+    .area-aside h3 {
+        grid-column: 1;
+        grid-row: 1;
+        /* margin-top: clamp(2.0vw, 2.0vw, 2.4vw); PRUEBA*/  
+        /*Evaluar clamp el tamaño minimo no puede ser menor al ideal*/
+        /* Verificartrabajo de medias Querys con Clamp*/
+        /*antes1 margin-top: 2rem hoy*/
+        /* antes margin-top: clamp(2.0vw, 2.0vw, 2.4vw) */
+        align-self: center;        
+        text-align: center;
+        padding: clamp(0.3rem, 0.8vw, 0.7rem);  /* 0.3rem 0.8vw 0.7rem mx*/
+        /*antes clamp(0.4rem, 2.0vw, 1.5rem)*/
+        font-size: clamp(0.6rem, 1.2vw, 1.2rem); /* 0.6rem 1.2vw 1.2rem mx*/
+        /*antes1 clamp(0.9rem, 2vw, 1.6rem)*/
+        /*antes2 clamp(0.8rem, 2.5vw, 1.5rem)*/       
+        border-radius: 50px;
+        background-color: #01548A;
+        color: white;
+        z-index: 10;
+    }
+
+    .area-aside img {
+        grid-column: 1;
+        grid-row: 2;
+        width: 100%;
+        /*Evaluar medidas con clamp*/
+        height: auto; /*Cambiar clamp por auto */
+        /*antes clamp(250px, 20vh, 400px)*/
+        object-fit: cover; /*Quitar o revisar bien* ayer/
+        /*antes object-fit: contain;*/
+        display: block; /*preguntar que hace*/
+        border-radius: 12px;
+        z-index: 1;   /*IMPORTANTE*/      
+    }
+    
+    .area-aside a {
+        grid-column: 1;
+        grid-row: 2;
+        align-self: end;
+        justify-self: start;
+        margin-left: clamp(0.4rem, 1.8vw, 1.7rem);
+        margin-bottom: clamp(0.4rem, 1.8vw, 1.7rem);
+        /*prueba margin-bottom: clamp(0.4rem, 1.8vw, 1.7rem); */
+        /*antes margin-bottom: clamp(2.5rem, 4vw, 3rem); */
+        text-decoration: none;
+        padding: clamp(0.3rem, 0.8vw, 0.7rem); /*preguntar clamp*/
+        /*antes padding: clamp(0.4rem, 2vw, 0.8rem) clamp(1rem, 5vw, 2rem)*/
+        font-weight: bold;
+        font-size: clamp(0.6rem, 1.0vw, 1.2rem);
+        /* escogido font-size: clamp(0.6rem, 1.0vw, 1.2rem);*/
+        /*antes font-size: (0.8rem, 2vw, 1rem)*/
+        border-radius: 50px;
+        background-color: #01548A;
+        color: white;
+        z-index: 10;  
+    }
+
+    .area-aside a:hover {
+    transform: scale(1.05);
+    background-color: white;
+    color: #01548A;
+    }
+
+
+/* =================
+    MAIN // ARTICLES
+   ================= */
+/* =========== 
+    ARTICLES: 
+   =========== */
+.card {
+    display: grid;
+    /* Creamos una sola celda donde todos se encimarán */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    /*antes grid-template-rows: auto;*/
+    overflow: hidden;
+    position: relative;
+     /* Fondo blanco para resaltar el contenido */
+    /* 3. Refuerzo de redondeo para las esquinas inferiores */
+}
+
+.card h3 {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: start; /* Lo manda arriba */
+    text-align: center;
+    width: 100%;
+    padding: clamp(0.5rem, 1.5vw, 1rem);
+    background-color: #01548A;
+    color: white;
+    border-radius: 25px;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    z-index: 1;
+}
+
+.card img {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    z-index: 2;
+    background-color: #ffed00;
+    border-radius: 25px
+}
+
+
+/* ============= 
+    LINK MOVILES 
+   ============= */
+.card .link-moviles {
+    grid-row: 2;
+    grid-column: 1;
+    align-self: end; /* Lo manda abajo */
+    justify-self: start; /* Lo manda a la izquierda */
+    margin: clamp(0.6rem, 2vw, 0.8rem); /* Espacio desde el borde */
+    padding: clamp(0.3rem, 1vw, 0.6rem) clamp(0.6rem, 2vw, 1.2rem);    
+    background-color: #01548A; /* Amarillo para resaltar sobre el azul */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.7rem;
+    /* clamp(min 0.6rem 2.0vw max 0.7rem)*/
+    border-radius: 0.8rem;
+    /* asd */
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+.card .link-moviles:hover {
+    transform: scale(1.05);
+    background-color: white;
+    color: #01548A;
+}
+
+
+/* ==============
+    LINK INTERNET 
+   ============== */
+.card .link-internet {
+    grid-row: 2;
+    grid-column: 1;
+    align-self: start; /* Lo manda abajo */
+    justify-self: end; /* Lo manda a la izquierda */
+    margin: clamp(0.6rem, 2vw, 0.8rem); /* Espacio desde el borde */
+    padding: clamp(0.3rem, 1vw, 0.6rem) clamp(0.6rem, 2vw, 1.2rem);    
+    background-color: #01548A; /* Amarillo para resaltar sobre el azul */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.7rem;
+    /* clamp(min 0.6rem 2.0vw max 0.7rem)*/
+    border-radius: 0.8rem;
+    /* asd */
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+.card .link-internet:hover {
+    transform: scale(1.05);
+    background-color: white;
+    color: #01548A;
+}
+
+/* ===============
+    LINK CELULARES 
+   =============== */
+
+.card .link-celulares {
+    grid-row: 2;
+    grid-column: 1;
+    align-self: end; /* Lo manda abajo */
+    justify-self: end; /* Lo manda a la izquierda */
+    margin: clamp(0.6rem, 2vw, 0.8rem); /* Espacio desde el borde */
+    padding: clamp(0.3rem, 1vw, 0.6rem) clamp(0.6rem, 2vw, 1.2rem);    
+    background-color: #01548A; /* Amarillo para resaltar sobre el azul */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.7rem;
+    /* clamp(min 0.6rem 2.0vw max 0.7rem)*/
+    border-radius: 0.8rem;
+    /* asd */
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+.card .link-celulares:hover {
+    transform: scale(1.05);
+    background-color: white;
+    color: #01548A;
+}
+
+/* ==================== 
+    FOOTER: ESCRITORIO
+   ==================== */
+    .area-footer {
+    display: grid;
+    grid-template-columns: 1fr; /* Una sola columna */
+    grid-template-rows: auto auto; /* Dos filas (la primera para contenido, la segunda para legal) */
+    width: 100%;
+    background-color: #01548A; /* Fondo base azul */
+    /*truco para bordes*/
+    border-radius: 15px 15px 15px 15px; 
+    outline: 2px #01548A  solid
+    /*truco para bordes*/
+}
+
+/* ================ 
+    FOOTER: SOCIAL
+   ================ */
+.footer-contacto {
+    grid-row: 1; /* Se ubica en la primera fila */
+    display: grid; 
+    /* Dividimos esta fila internamente en 3 columnas para tus 3 elementos */
+    grid-template-columns: repeat(3, 1fr); 
+    align-items: center;
+    justify-items: center;
+    padding: 2rem 5%;
+    gap: 20px;
+}
+
+/* Aseguramos que los elementos internos se vean */
+.footer-contacto .logo,
+.footer-contacto .redes-sociales,
+.footer-contacto address {
+    color: white;
+}
+.footer-contacto .logo p {
+    display: block; /* Forzamos que los párrafos del logo sean visibles */
+    color: white;
+}
+.footer-contacto .redes-sociales h4 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+.footer-contacto .redes-sociales ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+.footer-contacto .redes-sociales ul a {
+    text-decoration: none;
+    color: #f2f2f2;
+}
+
+.footer-contacto address h4 {
+    align-items: center;
+    justify-items: center;
+}
+.footer-contacto address ul {
+    list-style: none;
+}
+.footer-contacto address ul a {
+    text-decoration: none;
+    color: white;
+}
+
+
+/* ================ 
+    FOOTER: LEGAL
+   ================ */
+.footer-legal {
+    grid-row: 2; /* Se posiciona en la segunda fila del grid padre */
+    background-color: #f2f2f2; /* Fondo gris claro solicitado */
+    
+    /* Alineación horizontal con Flexbox */
+    display: flex;
+    justify-content: space-between; /* Separa los grupos a los extremos */
+    align-items: center; /* Centra verticalmente los elementos */    
+    padding: 1rem 5%;
+    width: 100%;
+}
+.footer-legal p {
+    color: #01548A;
+    font-size: 0.85rem;
+    margin: 0;
+}
+.footer-legal nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
 .footer-legal nav ul {
-    display: flex; /* agregado 4.4 */
-    flex-direction: row; /* agregado 4.4 */
-    list-style: none; /* agregado 4.4 */
-    gap: 25px; /* agregado 4.4 */
+    display: flex;
+    gap: 40px 40px;
+    list-style: none;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+.footer-legal nav ul a {
+    text-decoration: none;
+    color: #01548A;
+}
+.footer-legal img {
+    max-height: 80px;
+    width: auto;
+}
+
+/* ==================== 
+    FOOTER: MÓVIL
+   ==================== */
+@media (max-width: 768px) {
+    .area-footer {
+        /* Cambiamos a 1 columna y 3 filas como solicitaste */
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto; 
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    /* FILA 1: Logo y Redes Sociales */
+    .footer-contacto {
+        grid-row: 1;
+        /* Reconfiguramos el grid interno para apilar elementos */
+        grid-template-columns: 1fr; 
+        gap: 25px;
+        padding: 2rem 5%;
+    }
+
+    /* FILA 2: Address (Contacto directo) */
+    .footer-contacto address {
+        grid-row: 2; /* Movemos el address a la segunda fila del grid padre */
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* FILA 3: Contenedor Legal */
+    .footer-legal {
+        grid-row: 3;
+        flex-direction: column; /* Apilamos los elementos legales verticalmente */
+        gap: 15px;
+        text-align: center;
+        padding: 1.5rem 5%;
+    }
+
+    /* Ajustes adicionales para que nada se vea amontonado */
+    .footer-legal nav ul {
+        flex-direction: column; /* Enlaces uno debajo del otro */
+        gap: 10px;
+    }
 }
