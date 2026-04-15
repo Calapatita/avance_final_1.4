@@ -158,6 +158,10 @@ body {
     margin: 0.5rem 0;
     border-radius: 15px;
     background-color: #01548A;    
+    position: sticky;  /* Hace que el elemento "flote" al hacer scroll */
+    top: 0;           /* Se queda pegado justo en el borde superior */
+    z-index: 1000;    /* Asegura que el menú pase por ENCIMA de las imágenes del carrusel */
+    outline: 2px #f2f2f2 solid;
 }
 
 .area-nav ul {
@@ -186,89 +190,129 @@ body {
     ASIDE (320PX)
    ================ */
 
-    .area-aside{
-        grid-area: aside; /*rotulamos ubicacion*/
-        display: grid;
-        /*place-items: center;   REVISAR */ 
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
-        width: 100%; /* clamp(280px, 100%, 400px) hoy*/
-        max-width: 700px; /*hoy*/
-        margin: 0 auto;
-        border-radius: 12px;
-        overflow: hidden; /*Preguntar que hace*/
-        position: relative; /*Preguntar que hace*/
-        /*background-color: #ffed00; /*Pintado chafa*/
-        /*Util cuando cambiamos a vista de celular*/
+.area-aside {
+    grid-area: aside;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 700px;
+    max-height: 360px;
+    margin: 20px auto; /* Añadimos margen arriba para separar del header */
+    border-radius: 12px;
+    background-color: transparent; /* Eliminamos el fondo azul sobrante */
+}
+    
+/* 2. TÍTULO (Ahora flotará correctamente arriba sin tapar el centro) */
+.area-aside h3 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; /* Ocupa todo el ancho superior */
+    text-align: center;
+    padding: 10px 0;
+    font-size: clamp(0.7rem, 1.2vw, 1.2rem);
+    background-color: #01548A;
+    color: white;
+    z-index: 10;
+    margin: 0;
+    border-radius: 15px; /* Solo redondeado arriba */
+}
+
+.area-aside img {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    /*Evaluar medidas con clamp*/
+    height: auto; /*Cambiar clamp por auto */
+    /*antes clamp(250px, 20vh, 400px)*/
+    object-fit: cover; /*Quitar o revisar bien* ayer/
+    /*antes object-fit: contain;*/
+    display: block; /*preguntar que hace*/
+    border-radius: 12px;
+    z-index: 1;   /*IMPORTANTE*/      
     }
     
-    .area-aside h3 {
-        grid-column: 1;
-        grid-row: 1;
-        /* margin-top: clamp(2.0vw, 2.0vw, 2.4vw); PRUEBA*/  
-        /*Evaluar clamp el tamaño minimo no puede ser menor al ideal*/
-        /* Verificartrabajo de medias Querys con Clamp*/
-        /*antes1 margin-top: 2rem hoy*/
-        /* antes margin-top: clamp(2.0vw, 2.0vw, 2.4vw) */
-        align-self: center;        
-        text-align: center;
-        padding: clamp(0.3rem, 0.8vw, 0.7rem);  /* 0.3rem 0.8vw 0.7rem mx*/
-        /*antes clamp(0.4rem, 2.0vw, 1.5rem)*/
-        font-size: clamp(0.6rem, 1.2vw, 1.2rem); /* 0.6rem 1.2vw 1.2rem mx*/
-        /*antes1 clamp(0.9rem, 2vw, 1.6rem)*/
-        /*antes2 clamp(0.8rem, 2.5vw, 1.5rem)*/       
-        border-radius: 50px;
-        background-color: #01548A;
-        color: white;
-        z-index: 10;
-    }
 
-    .area-aside img {
-        grid-column: 1;
-        grid-row: 2;
-        width: 100%;
-        /*Evaluar medidas con clamp*/
-        height: auto; /*Cambiar clamp por auto */
-        /*antes clamp(250px, 20vh, 400px)*/
-        object-fit: cover; /*Quitar o revisar bien* ayer/
-        /*antes object-fit: contain;*/
-        display: block; /*preguntar que hace*/
-        border-radius: 12px;
-        z-index: 1;   /*IMPORTANTE*/      
-    }
-    
-    .area-aside a {
-        grid-column: 1;
-        grid-row: 2;
-        align-self: end;
-        justify-self: start;
-        margin-left: clamp(0.4rem, 1.8vw, 1.7rem);
-        margin-bottom: clamp(0.4rem, 1.8vw, 1.7rem);
-        /*prueba margin-bottom: clamp(0.4rem, 1.8vw, 1.7rem); */
-        /*antes margin-bottom: clamp(2.5rem, 4vw, 3rem); */
-        text-decoration: none;
-        padding: clamp(0.3rem, 0.8vw, 0.7rem); /*preguntar clamp*/
-        /*antes padding: clamp(0.4rem, 2vw, 0.8rem) clamp(1rem, 5vw, 2rem)*/
-        font-weight: bold;
-        font-size: clamp(0.6rem, 1.0vw, 1.2rem);
-        /* escogido font-size: clamp(0.6rem, 1.0vw, 1.2rem);*/
-        /*antes font-size: (0.8rem, 2vw, 1rem)*/
-        border-radius: 50px;
-        background-color: #01548A;
-        color: white;
-        z-index: 10;  
-    }
+/* 3. EL CARRETE */
+.carrusel {
+    display: flex;
+    width: 300%; 
+    animation: carrusel-fluido-3 15s infinite ease-in-out;
+    margin-top: 40px; /* IMPORTANTE: Empuja las imágenes debajo del h3 */
+}
 
-    .area-aside a:hover {
-    transform: scale(1.05);
-    background-color: white;
-    color: #01548A;
-    }
+.carrusel a.link-promo {
+    width: 33.333%;
+    display: block;
+    position: relative;
+}
+
+.carrusel img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* 4. ANIMACIÓN (Ajustada para que no se pierda al regresar) */
+@keyframes carrusel-fluido-3 {
+    0%, 25% { transform: translateX(0); }
+    33%, 58% { transform: translateX(-33.33%); }
+    66%, 91% { transform: translateX(-66.66%); }
+    100% { transform: translateX(0); }
+}
 
 
 /* =================
     MAIN // ARTICLES
    ================= */
+.area-main .card a {
+    position: absolute;
+    background-color: #01548A;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    z-index: 30;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombrita para que resalte */
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.area-main .card:nth-child(1) a {
+    top: auto;
+    bottom: 25px;
+    left: 20px;
+    right: auto;
+}
+
+/* 2. INTERNET HOGAR (En el Inicio): Derecha Superior */
+.area-main .card:nth-child(2) a {
+    top: 20px;
+    right: 20px;
+    bottom: auto;
+    left: auto;
+}
+
+/* 3. CELULARES (En el Inicio): Derecha Inferior */
+.area-main .card:nth-child(3) a {
+    top: auto;
+    bottom: 25px;
+    right: 20px;
+    left: auto;
+}
+
+.area-main .card a:hover {
+    background-color: white;
+    color: #01548A;
+    border: 1px solid #01548A;
+    transform: scale(1.05); /* Se agranda un poquito */
+}
 /* =========== 
     ARTICLES: 
    =========== */
@@ -409,6 +453,12 @@ body {
     /*truco para bordes*/
 }
 
+
+/* CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMBIOS
+/* CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMBIOS
+
+
+
 /* ================ 
     FOOTER: SOCIAL
    ================ */
@@ -465,7 +515,7 @@ body {
    ================ */
 .footer-legal {
     grid-row: 2; /* Se posiciona en la segunda fila del grid padre */
-    background-color: #f2f2f2; /* Fondo gris claro solicitado */
+    background-color: #f2f2f2; /* Fondo gris claro*/
     
     /* Alineación horizontal con Flexbox */
     display: flex;
@@ -542,5 +592,589 @@ body {
     .footer-legal nav ul {
         flex-direction: column; /* Enlaces uno debajo del otro */
         gap: 10px;
+    }
+    .footer-legal img {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    }
+
+.footer-legal img:hover {
+    transform: scale(1.05); /* Hace que la imagen crezca un poquito al pasar el mouse */
+    filter: brightness(1.1); /* Le da un poco más de luz */
+    }
+}
+
+
+
+
+/* ============================= 
+    PÁGINA: NOSOTROS
+   ============================= */
+
+.area-main-nosotros {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: clamp(1rem, 5vw, 3rem);
+}
+
+.nosotros-historia {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.nosotros-historia h2 {
+    color: #01548A;
+    margin-bottom: 1rem;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+.nosotros-historia p {
+    line-height: 1.6;
+    color: #444;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nosotros-mision-vision {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.cuadro-info {
+    background-color: #01548A;
+    color: white;
+    padding: 2rem;
+    border-radius: 25px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.cuadro-info:hover {
+    transform: translateY(-10px);
+}
+
+.cuadro-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #a0d4ff;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.cuadro-info p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Ajuste móvil para asegurar legibilidad */
+@media (max-width: 768px) {
+    .nosotros-mision-vision {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+/* ============================= 
+    PÁGINA: LIBRO DE RECLAMACIONES
+   ============================= */
+
+.area-main-libro {
+    grid-area: main;
+    padding: clamp(1rem, 3vw, 2.5rem);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.libro-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #01548A;
+}
+
+.libro-header h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    text-transform: uppercase;
+}
+
+.formulario-reclamacion {
+    background: white;
+    padding: 2rem;
+    border-radius: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+fieldset {
+    border: 1px solid #01548A;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+legend {
+    padding: 0 10px;
+    color: #01548A;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.fila-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    outline-color: #01548A;
+}
+
+.radio-group {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    color: #444;
+}
+
+.btn-enviar {
+    background-color: #01548A;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background-color: #a0d4ff;
+    color: #01548A;
+}
+
+.btn-enviar:disabled {
+    background-color: #cccccc; /* Color gris */
+    cursor: not-allowed;       /* Cambia el puntero a un símbolo de "prohibido" */
+    color: #666666;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 600px) {
+    .fila-form {
+        grid-template-columns: 1fr;
+    }
+    
+    .formulario-reclamacion {
+        padding: 1.2rem;
+    }
+}
+
+
+
+
+/* ============================= 
+    PÁGINA: REGISTRO DE CLIENTES
+   ============================= */
+
+.REGISTRO {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+    background-color: #f4f7f9;
+}
+
+.contenedor-registro {
+    background-color: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 2.5rem;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.registro-info h2 {
+    color: #01548A;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.registro-info p {
+    color: #666;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.grupo-input {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.grupo-input label {
+    font-weight: bold;
+    color: #333;
+    font-size: 0.85rem;
+}
+
+.grupo-input input {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    outline-color: #01548A;
+}
+
+/* ESTADOS DEL BOTÓN */
+.btn-registro {
+    width: 100%;
+    padding: 1rem;
+    background-color: #01548A;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Estilo cuando está DESHABILITADO */
+.btn-registro:disabled {
+    background-color: #d1d1d1;
+    color: #777;
+    cursor: not-allowed;
+    border: 1px dashed #999;
+}
+
+
+
+
+
+/* ========================= 
+    PÁGINA: PARA CELULARES
+   ========================= */
+
+/* Contenedor principal de celulares */
+
+.card a {
+    position: absolute;
+    background-color: #01548A;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    z-index: 20;
+    transition: all 0.3s ease;
+    right: 20px; /* Ambos se pegan a la derecha */
+}
+
+.area-main-celulares {
+    grid-area: main;
+    display: grid;
+    /* 3 columnas de igual tamaño */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* Reutilizamos el estilo de card con los ajustes de grid */
+.card {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease; /*EFECTO CHIDORI*/
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Efecto de levante al pasar el mouse */
+}
+
+.area-main-celulares .card a {
+    bottom: 20px;
+    top: auto; /* Nos aseguramos de anular el top */
+}
+
+.card h3 {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: start;
+    text-align: center;
+    width: 100%;
+    padding: clamp(0.5rem, 1.5vw, 1rem);
+    background-color: #01548A;
+    color: white;
+    border-radius: 25px;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    z-index: 10;
+}
+
+.card img {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Para que el celular se vea completo sin recortarse */
+    display: block;
+    z-index: 5;
+    background-color: #ffffff; /* Fondo blanco para los equipos */
+    border: 2px solid #01548A; /* Borde amarillo para resaltar */
+    border-radius: 25px;
+    padding: 1rem;
+}
+
+/* RESPONSIVE: Ajuste para pantallas pequeñas */
+@media (max-width: 1024px) {
+    .area-main-celulares {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .area-main-celulares {
+        grid-template-columns: 1fr; /* 1 sola columna en celulares */
+        gap: 1.5rem;
+    }
+
+    .area-main-celulares .card a {
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+
+
+
+
+
+/* ========================= 
+    PÁGINA: PARA INTERNET
+   ========================= */
+
+.area-main-internet {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2.5rem;
+    padding: 3rem 2rem;
+    align-items: start;
+}
+
+.area-main-internet .card a {
+    top: 15px;
+    bottom: auto; /* Nos aseguramos de anular el bottom si existiera */
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    position: relative; /* Mantiene el botón dentro de la tarjeta */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+
+.card a {
+    position: absolute;
+    top: 15px;          /* Lo subimos casi al borde superior de la zona amarilla */
+    right: 15px;        /* Lo pegamos más a la derecha */
+    background-color: #01548A;
+    color: white;
+    padding: 6px 15px;  /* Reducimos un poco el padding para que sea menos invasivo */
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem; /* Fuente un poquito más pequeña para que no tape */
+    z-index: 20;   
+    transition: all 0.3s ease;
+}
+
+.card a:hover {
+    background-color: #ffed00;
+    color: #01548A;
+    border: 1px solid #01548A;
+}
+
+/* Ajuste preventivo para que el título azul no se encime si es muy alto */
+.card h3 {
+    z-index: 25; /* El título siempre por encima de todo */
+    position: relative;
+}
+
+
+.card img {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    z-index: 5;
+    background-color: #f2f2f2;
+    border-radius: 25px;
+}
+
+/* RESPONSIVE ORIGINAL MANTENIDO */
+@media (max-width: 900px) {
+    .area-main-internet {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 600px) {
+    .area-main-internet {
+        grid-template-columns: 1fr; 
+        gap: 2rem;
+    }
+    
+    .card a {
+        top: 65px; /* Ajuste ligero para pantallas pequeñas */
+        right: 15px;
+        font-size: 0.8rem;
+    }
+    
+    .area-main-internet .card a {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+
+
+
+
+/* ========================= 
+    PÁGINA: PLANES MÓVILES
+   ========================= */
+
+/* Contenedor principal de Móviles */
+.area-main-moviles {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2.5rem;
+    padding: 3rem 2rem;
+    align-items: start;
+}
+
+/* Base de la tarjeta (Mantiene consistencia) */
+.card {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    position: relative; /* Necesario para posicionar el botón */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* BOTÓN SOLICITAR: Inferior Izquierda */
+.area-main-moviles .card a {
+    position: absolute;
+    bottom: 25px;       /* Distancia desde el borde inferior */
+    left: 20px;         /* Distancia desde el borde izquierdo */
+    
+    /* ESTO CORRIGE EL ESTIRAMIENTO */
+    top: auto;          /* Cancela cualquier instrucción de 'top' previa */
+    right: auto;        /* Cancela cualquier instrucción de 'right' previa */
+    width: fit-content; /* El botón solo mide lo que mide el texto */
+    
+    background-color: #01548A;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    z-index: 30;        /* Para que esté por encima de todo */
+    transition: all 0.3s ease;
+    display: inline-block; /* Asegura que se comporte como botón */
+}
+
+.area-main-moviles .card a:hover {
+    background-color: white;
+    color: #01548A;
+    border: 1px solid #01548A;
+}
+
+/* Estilos de Título e Imagen (Igual que Internet) */
+.card h3 {
+    grid-row: 1;
+    grid-column: 1;
+    text-align: center;
+    padding: 1rem;
+    background-color: #01548A;
+    color: white;
+    border-radius: 25px;
+    font-size: clamp(0.9rem, 1.2vw, 1.3rem);
+    z-index: 10;
+}
+
+.card img {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    background-color: #f2f2f2;
+    border-radius: 25px;
+}
+
+/* RESPONSIVE ORIGINAL (900px y 600px) */
+@media (max-width: 900px) {
+    .area-main-moviles {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 600px) {
+    .area-main-moviles {
+        grid-template-columns: 1fr; 
+        gap: 2rem;
+    }
+    
+    .area-main-moviles .card a {
+        bottom: 15px;
+        left: 15px;
     }
 }
